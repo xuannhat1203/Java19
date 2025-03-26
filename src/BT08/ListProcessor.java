@@ -10,6 +10,11 @@ public interface ListProcessor {
     }
     default boolean checkOdd(List<Integer> list){
         Predicate<Integer> isOdd = i -> i % 2 != 0;
-        return list.stream().filter(isOdd).isParallel();
+        for(Integer i : list){
+            if(isOdd.test(i)){
+                return true;
+            }
+        }
+        return false;
     }
 }

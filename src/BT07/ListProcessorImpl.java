@@ -6,7 +6,11 @@ import java.util.function.Predicate;
 public class ListProcessorImpl implements ListProcessor {
     @Override
     public boolean containsNegative(List<Integer> list) {
-        Predicate<Integer> isNegative = i -> i % 2 != 0;
-        return list.stream().filter(isNegative).isParallel();
+        for (Integer num : list) {
+            if (num < 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }

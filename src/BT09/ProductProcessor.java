@@ -9,6 +9,11 @@ interface ProductProcessor {
         }
     }
     default boolean hasExpensiveProduct(List<Product> products) {
-        return products.stream().anyMatch(p -> p.getPrice() > 100);
+        for (Product product : products) {
+            if (product.getPrice() >100){
+                return true;
+            }
+        }
+        return false;
     }
 }
